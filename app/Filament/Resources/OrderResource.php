@@ -24,7 +24,11 @@ class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'Order';
+
+    protected static ?string $navigationIcon = 'heroicon-o-arrow-path-rounded-square';
+
+    protected static ?string $navigationGroup = 'Kasir';
 
     public static function form(Form $form): Form
     {
@@ -40,7 +44,6 @@ class OrderResource extends Resource
                             ->relationship(name: 'Produk', titleAttribute: 'nama_produk')
                             ->searchable()
                             ->reactive()
-                            ->multiple()
                             ->afterStateUpdated(function ($state, callable $set) {
                                 $produk = \App\Models\Produk::find($state);
                                 if ($produk) {
@@ -61,7 +64,8 @@ class OrderResource extends Resource
                             ->afterStateUpdated(function ($state, callable $set, callable $get) {
                                 $produkHarga = $get('harga');
                                 $set('total_harga', $produkHarga * $state);
-                            }),
+                            })
+                            ->numeric(),
                         TextInput::make('total_harga')
                             ->label('Total Harga')
                             ->readOnly()
