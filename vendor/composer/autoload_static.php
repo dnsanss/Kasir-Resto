@@ -172,6 +172,8 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
+            'Flowframe\\Trend\\Database\\Factories\\' => 35,
+            'Flowframe\\Trend\\' => 16,
             'Filament\\Widgets\\' => 17,
             'Filament\\Tables\\' => 16,
             'Filament\\Support\\' => 17,
@@ -465,8 +467,8 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces',
-            1 => __DIR__ . '/..' . '/league/uri',
+            0 => __DIR__ . '/..' . '/league/uri',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -545,6 +547,14 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Fruitcake\\Cors\\' => 
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
+        ),
+        'Flowframe\\Trend\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flowframe/laravel-trend/database/factories',
+        ),
+        'Flowframe\\Trend\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/flowframe/laravel-trend/src',
         ),
         'Filament\\Widgets\\' => 
         array (
@@ -682,9 +692,28 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'AnourValar\\EloquentSerialize\\Grammars\\QueryBuilderGrammar' => __DIR__ . '/..' . '/anourvalar/eloquent-serialize/src/Grammars/QueryBuilderGrammar.php',
         'AnourValar\\EloquentSerialize\\Package' => __DIR__ . '/..' . '/anourvalar/eloquent-serialize/src/Package.php',
         'AnourValar\\EloquentSerialize\\Service' => __DIR__ . '/..' . '/anourvalar/eloquent-serialize/src/Service.php',
+        'App\\Filament\\Resources\\KategoriResource' => __DIR__ . '/../..' . '/app/Filament/Resources/KategoriResource.php',
+        'App\\Filament\\Resources\\KategoriResource\\Pages\\CreateKategori' => __DIR__ . '/../..' . '/app/Filament/Resources/KategoriResource/Pages/CreateKategori.php',
+        'App\\Filament\\Resources\\KategoriResource\\Pages\\EditKategori' => __DIR__ . '/../..' . '/app/Filament/Resources/KategoriResource/Pages/EditKategori.php',
+        'App\\Filament\\Resources\\KategoriResource\\Pages\\ListKategoris' => __DIR__ . '/../..' . '/app/Filament/Resources/KategoriResource/Pages/ListKategoris.php',
+        'App\\Filament\\Resources\\OrderResource' => __DIR__ . '/../..' . '/app/Filament/Resources/OrderResource.php',
+        'App\\Filament\\Resources\\OrderResource\\Pages\\CreateOrder' => __DIR__ . '/../..' . '/app/Filament/Resources/OrderResource/Pages/CreateOrder.php',
+        'App\\Filament\\Resources\\OrderResource\\Pages\\EditOrder' => __DIR__ . '/../..' . '/app/Filament/Resources/OrderResource/Pages/EditOrder.php',
+        'App\\Filament\\Resources\\OrderResource\\Pages\\ListOrders' => __DIR__ . '/../..' . '/app/Filament/Resources/OrderResource/Pages/ListOrders.php',
+        'App\\Filament\\Resources\\OrderResource\\Pages\\ViewOrder' => __DIR__ . '/../..' . '/app/Filament/Resources/OrderResource/Pages/ViewOrder.php',
+        'App\\Filament\\Resources\\ProdukResource' => __DIR__ . '/../..' . '/app/Filament/Resources/ProdukResource.php',
+        'App\\Filament\\Resources\\ProdukResource\\Pages\\CreateProduk' => __DIR__ . '/../..' . '/app/Filament/Resources/ProdukResource/Pages/CreateProduk.php',
+        'App\\Filament\\Resources\\ProdukResource\\Pages\\EditProduk' => __DIR__ . '/../..' . '/app/Filament/Resources/ProdukResource/Pages/EditProduk.php',
+        'App\\Filament\\Resources\\ProdukResource\\Pages\\ListProduks' => __DIR__ . '/../..' . '/app/Filament/Resources/ProdukResource/Pages/ListProduks.php',
+        'App\\Filament\\Resources\\ProdukResource\\Pages\\ViewProduk' => __DIR__ . '/../..' . '/app/Filament/Resources/ProdukResource/Pages/ViewProduk.php',
+        'App\\Filament\\Widgets\\ChartOrder' => __DIR__ . '/../..' . '/app/Filament/Widgets/ChartOrder.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Models\\Kategori' => __DIR__ . '/../..' . '/app/Models/Kategori.php',
+        'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
+        'App\\Models\\Produk' => __DIR__ . '/../..' . '/app/Models/Produk.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
+        'App\\Providers\\Filament\\AdminPanelProvider' => __DIR__ . '/../..' . '/app/Providers/Filament/AdminPanelProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'BladeUI\\Heroicons\\BladeHeroiconsServiceProvider' => __DIR__ . '/..' . '/blade-ui-kit/blade-heroicons/src/BladeHeroiconsServiceProvider.php',
         'BladeUI\\Icons\\BladeIconsServiceProvider' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/BladeIconsServiceProvider.php',
@@ -2768,6 +2797,13 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Filament\\Widgets\\Widget' => __DIR__ . '/..' . '/filament/widgets/src/Widget.php',
         'Filament\\Widgets\\WidgetConfiguration' => __DIR__ . '/..' . '/filament/widgets/src/WidgetConfiguration.php',
         'Filament\\Widgets\\WidgetsServiceProvider' => __DIR__ . '/..' . '/filament/widgets/src/WidgetsServiceProvider.php',
+        'Flowframe\\Trend\\Adapters\\AbstractAdapter' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Adapters/AbstractAdapter.php',
+        'Flowframe\\Trend\\Adapters\\MySqlAdapter' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Adapters/MySqlAdapter.php',
+        'Flowframe\\Trend\\Adapters\\PgsqlAdapter' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Adapters/PgsqlAdapter.php',
+        'Flowframe\\Trend\\Adapters\\SqliteAdapter' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Adapters/SqliteAdapter.php',
+        'Flowframe\\Trend\\Trend' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/Trend.php',
+        'Flowframe\\Trend\\TrendServiceProvider' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/TrendServiceProvider.php',
+        'Flowframe\\Trend\\TrendValue' => __DIR__ . '/..' . '/flowframe/laravel-trend/src/TrendValue.php',
         'Fruitcake\\Cors\\CorsService' => __DIR__ . '/..' . '/fruitcake/php-cors/src/CorsService.php',
         'Fruitcake\\Cors\\Exceptions\\InvalidOptionException' => __DIR__ . '/..' . '/fruitcake/php-cors/src/Exceptions/InvalidOptionException.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
