@@ -43,6 +43,7 @@ class OrderResource extends Resource
                             ->label('Nama Produk')
                             ->relationship(name: 'Produk', titleAttribute: 'nama_produk')
                             ->searchable()
+                            ->preload()
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $set) {
                                 $produk = \App\Models\Produk::find($state);
@@ -84,10 +85,13 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nama')
+                    ->label('Nama Pembeli')
                     ->searchable(),
                 TextColumn::make('Produk.nama_produk')
+                    ->label('Nama Produk')
                     ->searchable(),
                 TextColumn::make('total_harga')
+                    ->label('Total Harga')
                     ->money('IDR')
                     ->searchable(),
             ])

@@ -61,14 +61,17 @@ class ProdukResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nama_produk')
+                    ->label('Nama Produk')
                     ->searchable(),
                 TextColumn::make('Kategori.nama')
                     ->label('Kategori')
                     ->searchable(),
                 TextColumn::make('harga')
+                    ->label('Harga')
                     ->money('IDR')
                     ->searchable(),
                 TextColumn::make('stok')
+                    ->label('Stok Produk')
                     ->numeric()
                     ->searchable(),
             ])
