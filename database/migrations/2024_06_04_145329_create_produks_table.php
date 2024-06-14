@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('kategori_id')->constrained()->cascadeOnDelete();
             $table->decimal('harga', 8, 2);
             $table->integer('stok');
+            $table->string('aktif');
             $table->timestamps();
         });
     }

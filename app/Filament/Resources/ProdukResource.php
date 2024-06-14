@@ -10,17 +10,21 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
 use function Laravel\Prompts\textarea;
-use Filament\Forms\Components\Textarea;
 
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ViewColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\ToggleButtons;
+use Filament\Infolists\Components\TextEntry;
 use App\Filament\Resources\ProdukResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProdukResource\RelationManagers;
-use Filament\Infolists\Components\TextEntry;
 
 class ProdukResource extends Resource
 {
@@ -51,7 +55,22 @@ class ProdukResource extends Resource
                         TextInput::make('stok')
                             ->numeric()
                             ->required(),
-
+                        ToggleButtons::make('aktif')
+                            ->label('STATUS PRODUK')
+                            ->inline(false)
+                            ->options([
+                                'AKTIF' => 'AKTIF',
+                                'TIDAK AKTIF' => 'TIDAK AKTIF'
+                            ])
+                            ->colors([
+                                'AKTIF' => 'success',
+                                'TIDAK AKTIF' => 'danger'
+                            ])
+                            ->icons([
+                                'AKTIF' => 'heroicon-o-check-circle',
+                                'TIDAK AKTIF' => 'heroicon-o-x-circle'
+                            ])
+                            ->Required(),
                     ]),
             ]);
     }
@@ -74,6 +93,13 @@ class ProdukResource extends Resource
                     ->label('Stok Produk')
                     ->numeric()
                     ->searchable(),
+                TextColumn::make('aktif')
+                    ->label('Status Produk')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'AKTIF' => 'success',
+                        'TIDAK AKTIF' => 'danger',
+                    }),
             ])
             ->filters([
                 //

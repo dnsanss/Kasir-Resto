@@ -66,7 +66,8 @@ class OrderResource extends Resource
                                 $produkHarga = $get('harga');
                                 $set('total_harga', $produkHarga * $state);
                             })
-                            ->numeric(),
+                            ->numeric()
+                            ->required(),
                         TextInput::make('total_harga')
                             ->label('Total Harga')
                             ->readOnly()
@@ -93,6 +94,10 @@ class OrderResource extends Resource
                 TextColumn::make('total_harga')
                     ->label('Total Harga')
                     ->money('IDR')
+                    ->searchable(),
+                TextColumn::make('created_at')
+                    ->label('Tanggal Pembelian')
+                    ->dateTime()
                     ->searchable(),
             ])
             ->filters([

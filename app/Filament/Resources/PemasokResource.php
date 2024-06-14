@@ -63,6 +63,15 @@ class PemasokResource extends Resource
                     ->searchable(),
                 TextColumn::make('alamat')
                     ->label('Alamat Pemasok')
+                    ->limit(50)
+                    ->tooltip(function (TextColumn $column): ?string {
+                        $state = $column->getState();
+
+                        if (strlen($state) <= $column->getCharacterLimit()) {
+                            return null;
+                        }
+                        return $state;
+                    })
                     ->searchable(),
                 TextColumn::make('nama_barang')
                     ->label('Nama Barang')
