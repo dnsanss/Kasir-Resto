@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('produk_id')->constrained()->cascadeOnDelete();
             $table->string('nama');
             $table->integer('quantity');
+            $table->decimal('harga', 8, 2);
             $table->decimal('total_harga', 8, 2);
             $table->timestamps();
         });

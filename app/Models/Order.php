@@ -10,7 +10,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'quantity', 'produk_id', 'total_harga'];
+    protected $fillable = ['nama', 'quantity', 'produk_id', 'harga', 'total_harga'];
 
     public function produk(): BelongsTo
     {

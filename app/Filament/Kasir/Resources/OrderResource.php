@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Kasir\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
@@ -9,19 +9,16 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
-use function Laravel\Prompts\select;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\ReadOnly;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-
-use App\Filament\Resources\OrderResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\OrderResource\RelationManagers;
-use Filament\Infolists\Components\Section as ComponentsSection;
 use Filament\Infolists\Components\TextEntry;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Kasir\Resources\OrderResource\Pages;
+use App\Filament\Kasir\Resources\OrderResource\RelationManagers;
+use Filament\Infolists\Components\Section as ComponentsSection;
 
 class OrderResource extends Resource
 {
@@ -31,13 +28,54 @@ class OrderResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-arrow-path-rounded-square';
 
-    protected static ?string $navigationGroup = 'Kasir';
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Section::make('Detail Pesanan')
+                    ->schema([
+                        TextInput::make('nama')
+                            ->label('Nama Pembeli')
+                            ->required(),
+                        Select::make('produk_id')
+                            ->label('Nama Produk')
+                            ->relationship(name: 'Produk', titleAttribute: 'nama_produk')
+                            ->searchable()
+                            ->preload()
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                $produk = \App\Models\Produk::find($state);
+                                if ($produk) {
+                                    $set('harga', $produk->harga);
+                                    $set('total_harga', $produk->harga);
+                                }
+                            }),
+                        TextInput::make('harga')
+                            ->readOnly()
+                            ->numeric()
+                            ->label('Harga')
+                            ->required(function ($state) {
+                                return $state ? number_format($state, 2) : '';
+                            })
+                            ->default(0),
+                        TextInput::make('quantity')
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                                $produkHarga = $get('harga');
+                                $set('total_harga', $produkHarga * $state);
+                            })
+                            ->numeric()
+                            ->required(),
+                        TextInput::make('total_harga')
+                            ->label('Total Harga')
+                            ->readOnly()
+                            ->numeric()
+                            ->default(function ($data) {
+                                return $data['total_harga'] ? number_format($data['total_harga'], 2) : '';
+                            })
+                            ->default(0),
+                    ])
+                    ->columns(2),
             ]);
     }
 
@@ -65,7 +103,7 @@ class OrderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                // Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -107,13 +145,7 @@ class OrderResource extends Resource
         return [
             'index' => Pages\ListOrders::route('/'),
             'create' => Pages\CreateOrder::route('/create'),
-            //'view' => Pages\ViewOrder::route('/{record}'),
-            //'edit' => Pages\EditOrder::route('/{record}/edit'),
+            'edit' => Pages\EditOrder::route('/{record}/edit'),
         ];
-    }
-
-    public static function canCreate(): bool
-    {
-        return false;
     }
 }
